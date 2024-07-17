@@ -49,7 +49,7 @@ local settings = {
   backup = true,
   backupcopy = "yes",
   backupdir = "~/tmp",
-  directory = "~/.config/nvim/.cache/swap//",
+  directory = "~/.config/nvim/.cache/swap/",
   -- }}}
 
   -- Wildignore {{{

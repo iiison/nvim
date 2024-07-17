@@ -11,9 +11,19 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
+		formatting.prettier,
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
-    -- diagnostics.flake8
+    diagnostics.flake8
 	},
+})
+
+-- Format file on save
+local format_autogroup = vim.api.nvim_create_augroup("FormatAutoGroup", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = format_autogroup,
+  pattern = "*",
+  callback = function()
+    vim.lsp.buf.format({ async = false })
+  end,
 })

@@ -52,7 +52,6 @@ return packer.startup(function(use)
   use { "kyazdani42/nvim-web-devicons", commit = "563f3635c2d8a7be7933b9e547f7c178ba0d4352" }
   use { "kyazdani42/nvim-tree.lua", commit = "7282f7de8aedf861fe0162a559fc2b214383c51c" }
   use { "akinsho/bufferline.nvim", commit = "c7492a76ce8218e3335f027af44930576b561013" }
-  use { 'nvim-lualine/lualine.nvim', commit = "32a7382a75a52e8ad05f4cec7eeb8bbfbe80d461", requires = { "kyazdani42/nvim-web-devicons", opt = true }}
 	use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }
   use { "nvim-lualine/lualine.nvim", commit = "a52f078026b27694d2290e34efa61a6e4a690621" }
   use { "akinsho/toggleterm.nvim", commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda" }
@@ -70,12 +69,16 @@ return packer.startup(function(use)
         })
     end
   })
+  --}}
 
 	-- Colorschemes {{{
   use { "folke/tokyonight.nvim", commit = "66bfc2e8f754869c7b651f3f47a2ee56ae557764" }
   use { "lunarvim/darkplus.nvim", commit = "13ef9daad28d3cf6c5e793acfc16ddbf456e1c83" }
   use {  "olimorris/onedarkpro.nvim", commit = "7a7641e27f922496b4bf8493acd9f2f8da7ff864" }
   use {  "ful1e5/onedark.nvim", commit = "b5161f0c631571640485be5d1c059cab82c86872" }
+  use { 'rose-pine/neovim', as = 'rose-pine' }
+  use { "craftzdog/solarized-osaka.nvim", lazy = false, priority = 1000, opts = {}, }
+
   -- }}}
 
 	-- Cmp  {{{
@@ -101,19 +104,24 @@ return packer.startup(function(use)
   -- }}}
 
 	-- Telescope {{{
-  use { "nvim-telescope/telescope.nvim", tag = "0.1.0", requires = { {"nvim-lua/plenary.nvim"} } }
+  use { "nvim-telescope/telescope.nvim", tag = "0.1.5", requires = { {"nvim-lua/plenary.nvim"} } }
   -- }}}
 
 	-- Treesitter {{{
 	use {
 		"nvim-treesitter/nvim-treesitter",
-		commit = "7c9ddb72d198d45895d73bc7495e1b7e9627f6ca",
+    commit = "7eb5f1a2e3949496f26c4084b521b30f2d08137a",
+    -- tag = "v0.8.0",
     run = "TSUpdate",
 	}
   -- }}}
 
 	-- Git
 	use { "lewis6991/gitsigns.nvim", commit = "2ab3bdf0a40bab53033048c6be75bda86316b55d" }
+  -- }}}
+
+  -- TS Errors {{{
+  use {"OlegGulevskyy/better-ts-errors.nvim" }
   -- }}}
 
 	-- Automatically set up your configuration after cloning packer.nvim
